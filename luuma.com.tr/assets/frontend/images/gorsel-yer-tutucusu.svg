@@ -1,0 +1,7 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <rect width="800" height="600" fill="#f0f8f1"/>
+  <rect x="2" y="2" width="796" height="596" fill="none" stroke="#004518" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="400" y="280" text-anchor="middle" font-family="Arial, sans-serif" font-size="22" fill="#004518" font-weight="bold">📸 BURAYA FOTOĞRAF EKLEYİN</text>
+  <text x="400" y="320" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#555">Dosya adı: GORSEL_ADI</text>
+  <text x="400" y="350" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" fill="#888">assets/frontend/images/ klasörüne yükleyin</text>
+</svg>
