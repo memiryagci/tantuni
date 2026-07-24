@@ -382,96 +382,93 @@
 <!-- Main Custom js file -->
 <script src="../assets/frontend/js/function_v%3D20260615.js"></script>
 <script>
-	function googleTranslateElementInit() {
-		new google.translate.TranslateElement({
-			pageLanguage: 'tr',
-			includedLanguages: 'tr,en,ar',
-			layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-			autoDisplay: false
-		}, 'google_translate_element');
-	}
+						function googleTranslateElementInit() {
+							new google.translate.TranslateElement({
+								pageLanguage: 'tr',
+								includedLanguages: 'tr,en,ar',
+								layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+								autoDisplay: false
+							}, 'google_translate_element');
+						}
 
-	(function () {
-		function setGoogTransCookie(lang) {
-			const value = `/tr/${lang}`;
-			const secure = location.protocol === 'https:' ? ';secure' : '';
-			document.cookie = `googtrans=${value};path=/;max-age=31536000;samesite=lax${secure}`;
-			// Bazı kurulumlarda domain cookie de bekleniyor, varsa ayrıca set edelim
-			const host = location.hostname;
-			if (host && host.indexOf('.') > -1) {
-				document.cookie = `googtrans=${value};path=/;domain=.${host};max-age=31536000;samesite=lax${secure}`;
-			}
-		}
+						(function () {
+							function setGoogTransCookie(lang) {
+								const value = `/tr/${lang}`;
+								const secure = location.protocol === 'https:' ? ';secure' : '';
+								if (lang === 'tr') {
+									document.cookie = 'googtrans=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT';
+									document.cookie = `googtrans=/tr/tr;path=/;max-age=31536000;samesite=lax${secure}`;
+									const host = location.hostname;
+									if (host && host.indexOf('.') > -1) {
+										document.cookie = `googtrans=;path=/;domain=.${host};expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+										document.cookie = `googtrans=/tr/tr;path=/;domain=.${host};max-age=31536000;samesite=lax${secure}`;
+									}
+								} else {
+									document.cookie = `googtrans=${value};path=/;max-age=31536000;samesite=lax${secure}`;
+									const host = location.hostname;
+									if (host && host.indexOf('.') > -1) {
+										document.cookie = `googtrans=${value};path=/;domain=.${host};max-age=31536000;samesite=lax${secure}`;
+									}
+								}
+							}
 
-		function getCurrentLang() {
-			const match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/);
-			if (!match || !match[1]) return 'tr';
-			const value = decodeURIComponent(match[1]); // /tr/en
-			const parts = value.split('/');
-			return parts[2] || 'tr';
-		}
+							function getCurrentLang() {
+								const match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/);
+								if (!match || !match[1]) return localStorage.getItem('cukurova_topbar_lang') || 'tr';
+								const value = decodeURIComponent(match[1]);
+								const parts = value.split('/');
+								return parts[2] || 'tr';
+							}
 
-		function setActiveLangButton(lang) {
-			document.querySelectorAll('.lang-flag-btn').forEach((btn) => {
-				btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-			});
-		}
+							function setActiveLangButton(lang) {
+								document.querySelectorAll('.lang-flag-btn').forEach((btn) => {
+									btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+								});
+							}
 
-		function applyLang(lang) {
-			const combo = document.querySelector('.goog-te-combo');
-			setGoogTransCookie(lang);
-			if (combo) {
-				combo.value = lang;
-				combo.dispatchEvent(new Event('change'));
-			}
-			setActiveLangButton(lang);
-			localStorage.setItem('cukurova_topbar_lang', lang);
-			return !!combo;
-		}
+							document.addEventListener('click', function (e) {
+								const btn = e.target.closest('.lang-flag-btn');
+								if (!btn) return;
+								e.preventDefault();
+								const lang = btn.getAttribute('data-lang') || 'tr';
+								
+								setGoogTransCookie(lang);
+								localStorage.setItem('cukurova_topbar_lang', lang);
+								setActiveLangButton(lang);
 
-		document.addEventListener('click', function (e) {
-			const btn = e.target.closest('.lang-flag-btn');
-			if (!btn) return;
-			const lang = btn.getAttribute('data-lang') || 'tr';
-			const current = getCurrentLang();
-			if (current === lang) {
-				setActiveLangButton(lang);
-				return;
-			}
-			// Google combo henüz yüklenmediyse kısa bekleme ile tekrar dene
-			if (!applyLang(lang)) {
-				let tries = 0;
-				const t = setInterval(() => {
-					tries++;
-					if (applyLang(lang) || tries > 20) clearInterval(t);
-				}, 150);
-			}
+								const combo = document.querySelector('.goog-te-combo');
+								if (combo) {
+									combo.value = lang;
+									combo.dispatchEvent(new Event('change'));
+								}
+								
+								setTimeout(function() {
+									location.reload();
+								}, 100);
+							});
 
-			// Cookie tabanlı çevirinin her durumda devreye girmesi için yenile
-		});
+							document.addEventListener('DOMContentLoaded', function () {
+								const savedLang = localStorage.getItem('cukurova_topbar_lang');
+								const cookieLang = getCurrentLang();
+								const initialLang = savedLang || cookieLang || 'tr';
+								setActiveLangButton(initialLang);
 
-		document.addEventListener('DOMContentLoaded', function () {
-			const savedLang = localStorage.getItem('cukurova_topbar_lang');
-			const cookieLang = getCurrentLang();
-			const initialLang = savedLang || cookieLang || 'tr';
-			setActiveLangButton(initialLang);
-
-			let tries = 0;
-			const t = setInterval(() => {
-				tries++;
-				const combo = document.querySelector('.goog-te-combo');
-				if (combo) {
-					if (initialLang && combo.value !== initialLang) {
-						combo.value = initialLang;
-						combo.dispatchEvent(new Event('change'));
-					}
-					clearInterval(t);
-				}
-				if (tries > 40) clearInterval(t);
-			}, 150);
-		});
-	})();
-</script>
+								let tries = 0;
+								const t = setInterval(() => {
+									tries++;
+									const combo = document.querySelector('.goog-te-combo');
+									if (combo) {
+										if (initialLang && combo.value !== initialLang) {
+											combo.value = initialLang;
+											combo.dispatchEvent(new Event('change'));
+										}
+										clearInterval(t);
+									}
+									if (tries > 40) clearInterval(t);
+								}, 150);
+							});
+						})();
+					</script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
 
 
