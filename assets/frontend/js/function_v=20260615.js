@@ -51,6 +51,7 @@
 		speed: 1000,
 		spaceBetween: 0,
 		loop: true,
+		autoHeight: true,
 		autoplay: {
 			delay: 4000,
 		},
@@ -59,6 +60,7 @@
 			clickable: true,
 		},
 	});
+
 
 	/* testimonial Slider JS */
 	if ($('.testimonial-slider').length) {

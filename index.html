@@ -27,7 +27,7 @@
 	<!-- Animated Css -->
 	<link href="assets/frontend/css/animate_v%3D20260615.css" rel="stylesheet">
 	<!-- Main Custom Css -->
-	<link href="assets/frontend/css/custom_v=20260615.css?v=4" rel="stylesheet" media="screen">
+	<link href="assets/frontend/css/custom_v=20260615.css?v=6" rel="stylesheet" media="screen">
     
 	<script>
 		var base_url="https://cukurovatantuni.com/";
@@ -173,37 +173,6 @@
             <div class="swiper-wrapper">
                 <!-- Hero Slide Start -->
                 <div class="swiper-slide">
-                    <div class="hero-slide slide-1">
-                        <div class="container">
-                            <div class="row align-items-center">
-                                <div class="col-lg-8 col-md-10">
-                                    <!-- Hero Content Start -->
-                                    <div class="hero-content">
-                                        <!-- Section Title Start -->
-                                        <div class="section-title">
-                                          
-                                            <h1 class="wow fadeInUp" data-wow-delay="0.1s">TARİHİ ÇUKUROVA TANTUNİ'YE HOŞ GELDİNİZ!</h1>
-                                            <p class="wow fadeInUp" data-wow-delay="0.2s">Çukurova'nın geleneksel usulüyle hazırlanan, taze malzemelerle hazırlanan gerçek tantuni lezzeti. Her ısırışta Çukurova'nın tadını alın.</p>
-                                        </div>
-                                        <!-- Section Title End -->
-                                        
-                                        <!-- Hero Button Start -->
-                                        <div class="hero-btn wow fadeInUp" data-wow-delay="0.4s">
-                                            <a href="kurumsal/index.html" class="btn-default">Biz Kimiz?</a>
-                                         
-                                        </div>
-                                        <!-- Hero Button End -->
-                                    </div>
-                                    <!-- Hero Content End -->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- Hero Slide End -->
-
-                <!-- Hero Slide Start -->
-                <div class="swiper-slide">
                     <div class="hero-slide slide-2">
                         <div class="container">
                             <div class="row align-items-center">
@@ -232,10 +201,65 @@
                     </div>
                 </div>
                 <!-- Hero Slide End -->
+
+                <!-- Hero Slide Start -->
+                <div class="swiper-slide">
+                    <div class="hero-slide slide-1">
+                        <div class="container">
+                            <div class="row align-items-center">
+                                <div class="col-lg-8 col-md-10">
+                                    <!-- Hero Content Start -->
+                                    <div class="hero-content">
+                                        <!-- Section Title Start -->
+                                        <div class="section-title">
+                                          
+                                            <h1 class="wow fadeInUp" data-wow-delay="0.1s">TARİHİ ÇUKUROVA TANTUNİ'YE HOŞ GELDİNİZ!</h1>
+                                            <p class="wow fadeInUp" data-wow-delay="0.2s">Çukurova'nın geleneksel usulüyle hazırlanan, taze malzemelerle hazırlanan gerçek tantuni lezzeti. Her ısırışta Çukurova'nın tadını alın.</p>
+                                        </div>
+                                        <!-- Section Title End -->
+                                        
+                                        <!-- Hero Button Start -->
+                                        <div class="hero-btn wow fadeInUp" data-wow-delay="0.4s">
+                                            <a href="kurumsal/index.html" class="btn-default">Biz Kimiz?</a>
+                                         
+                                        </div>
+                                        <!-- Hero Button End -->
+                                    </div>
+                                    <!-- Hero Content End -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Hero Slide End -->
             </div>
         </div>
     </div>
     <!-- Hero Section End -->
+
+    <!-- Prominent Menu & Announcement Section Start -->
+    <div class="prominent-menu-section">
+        <div class="container text-center">
+            <div class="prominent-menu-box mb-3">
+                <a href="menu/index.html" class="btn-prominent-menu">
+                    <i class="fa-solid fa-utensils me-2"></i> MENÜYÜ GÖR
+                </a>
+            </div>
+            <div class="announcement-slider-wrapper">
+                <div class="swiper announcement-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <p class="announcement-text"><i class="fa-regular fa-clock me-2"></i>Haftanın her günü 11.00 - 04.00 arası hizmetinizdeyiz.</p>
+                        </div>
+                        <div class="swiper-slide">
+                            <p class="announcement-text"><i class="fa-brands fa-whatsapp me-2" style="color: #25D366;"></i>WhatsApp hattından verilen siparişlerde masa fiyatına komisyonsuz sipariş fırsatı.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Prominent Menu & Announcement Section End -->
 
  
 
@@ -750,4 +774,23 @@
 </style>
 <!-- Phone Call Floating Button End -->
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    if (typeof Swiper !== 'undefined' && document.querySelector('.announcement-swiper')) {
+        new Swiper('.announcement-swiper', {
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            slidesPerView: 1,
+            speed: 800,
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false
+            }
+        });
+    }
+});
+</script>
 </body></html>

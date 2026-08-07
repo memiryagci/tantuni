@@ -1,4 +1,3 @@
-
 :root{
 	--primary-color				: #111111;
 	--secondary-color			: #FFFFFF;
@@ -6375,5 +6374,131 @@ body:has(.offcanvas){
 
 	.error-page-image{
         margin-bottom: 20px;
+    }
+}
+
+/* Prominent Menu & Announcement Ticker Styles */
+.prominent-menu-section {
+    background: #ffffff;
+    padding: 25px 15px 20px 15px;
+    border-top: 3px solid #004518;
+    border-bottom: 1px solid #e8e8e8;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    position: relative;
+    z-index: 10;
+    margin-top: 0 !important;
+}
+
+.prominent-menu-box {
+    margin-bottom: 16px;
+}
+
+.btn-prominent-menu {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #004518;
+    color: #ffffff !important;
+    font-size: 24px;
+    font-weight: 700;
+    padding: 18px 48px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: 1px;
+    box-shadow: 0 8px 25px rgba(0, 69, 24, 0.35);
+    transition: all 0.3s ease;
+    border: 2px solid #004518;
+    text-transform: uppercase;
+}
+
+.btn-prominent-menu:hover {
+    background-color: #e0a927;
+    border-color: #e0a927;
+    color: #004518 !important;
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 30px rgba(224, 169, 39, 0.45);
+}
+
+.announcement-slider-wrapper {
+    max-width: 850px;
+    margin: 0 auto;
+    overflow: hidden;
+    height: 44px;
+}
+
+.announcement-swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.announcement-text {
+    font-size: 22px;
+    font-weight: 700;
+    color: #004518;
+    margin: 0;
+    line-height: 44px;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    letter-spacing: 0.2px;
+}
+
+/* Mobile Fixes for Hero Whitespace and Font Sizes */
+@media (max-width: 991px) {
+    .hero {
+        padding: 0 !important;
+        margin: 0 !important;
+        background-color: #002b0f !important;
+        overflow: hidden;
+    }
+    .hero.hero-slider-layout {
+        padding: 0 !important;
+        margin: 0 !important;
+        background-color: #002b0f !important;
+    }
+    /* Override Swiper inline height styles on mobile */
+    .hero.hero-slider-layout .swiper {
+        height: auto !important;
+    }
+    .hero.hero-slider-layout .swiper-wrapper {
+        height: auto !important;
+    }
+    .hero.hero-slider-layout .swiper-slide {
+        height: auto !important;
+    }
+    .hero.hero-slider-layout .hero-slide {
+        padding: 60px 0 50px 0 !important;
+        background-size: cover !important;
+        background-position: center center !important;
+        background-color: #002b0f !important;
+        height: auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero.hero-slider-layout .hero-slide {
+        padding: 45px 0 35px 0 !important;
+    }
+    .btn-prominent-menu {
+        font-size: 20px;
+        padding: 15px 36px;
+        width: 92%;
+        max-width: 360px;
+    }
+    .announcement-slider-wrapper {
+        height: 60px;
+    }
+    .announcement-text {
+        font-size: 18px;
+        font-weight: 700;
+        white-space: normal;
+        line-height: 1.35;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        color: #004518;
+        padding: 0 10px;
     }
 }
