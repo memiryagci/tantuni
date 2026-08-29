@@ -6420,7 +6420,7 @@ body:has(.offcanvas){
 }
 
 .announcement-slider-wrapper {
-    max-width: 850px;
+    max-width: 960px;
     margin: 0 auto;
     overflow: hidden;
     height: 44px;
