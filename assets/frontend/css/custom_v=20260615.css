@@ -6420,11 +6420,15 @@ body:has(.offcanvas){
 }
 
 .announcement-slider-wrapper {
-    max-width: 960px;
+    max-width: 850px;
     margin: 0 auto;
-    overflow: hidden;
+    background: #f4f8f5;
+    border: 1px solid #cce3d4;
+    border-radius: 16px;
+    padding: 12px 20px;
+    box-shadow: 0 4px 15px rgba(0, 69, 24, 0.08);
     height: auto;
-    min-height: 48px;
+    min-height: 65px;
 }
 
 .announcement-swiper {
@@ -6433,17 +6437,27 @@ body:has(.offcanvas){
 }
 
 .announcement-text {
-    font-size: 20px;
-    font-weight: 700;
-    color: #004518;
+    font-size: 19px;
+    font-weight: 600;
+    color: #003813;
     margin: 0;
-    padding: 10px 20px;
-    line-height: 1.4;
+    line-height: 1.45;
     text-align: center;
     white-space: normal;
     word-break: break-word;
-    overflow: visible;
-    letter-spacing: 0.2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+}
+
+.announcement-text strong {
+    color: #004518;
+    font-weight: 800;
+}
+
+.announcement-text i {
+    font-size: 22px;
 }
 
 /* Mobile Fixes for Hero Whitespace and Font Sizes */
@@ -6459,7 +6473,6 @@ body:has(.offcanvas){
         margin: 0 !important;
         background-color: #002b0f !important;
     }
-    /* Override Swiper inline height styles on mobile */
     .hero.hero-slider-layout .swiper {
         height: auto !important;
     }
@@ -6489,20 +6502,21 @@ body:has(.offcanvas){
         max-width: 360px;
     }
     .announcement-slider-wrapper {
-        height: auto;
-        min-height: 70px;
+        padding: 14px 14px;
+        min-height: 85px;
+        border-radius: 14px;
     }
     .announcement-text {
-        font-size: 16px;
-        font-weight: 700;
-        white-space: normal;
-        line-height: 1.5;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        font-size: 17px;
+        line-height: 1.4;
         min-height: 70px;
-        height: auto;
-        color: #004518;
-        padding: 10px 15px;
+        flex-direction: column;
+        gap: 6px;
+        padding: 0 5px;
+    }
+    .announcement-text i {
+        font-size: 24px;
+        margin-right: 0 !important;
+        margin-bottom: 2px;
     }
 }
